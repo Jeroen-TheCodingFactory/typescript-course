@@ -58,13 +58,43 @@ add(number1,number2,printResult, resultPhrase);
 
 // type inference still will kick in though, so typescript infers it, you won't have to make a specific object.
 
-const person = {
-    name: "Jeroen",
-    age: 29,
-}
+// const person = {
+//     name: "Jeroen",
+//     age: 29,
+// }
 
 // when we use a specific type, autocomplete works on our objects :)
 
-console.log(person.age);
+// console.log(person.age);
 // typescript throws a warning when we dont have a property on a object.
 //When we hover over the object is becomes clear which datatypes are in the object.
+
+
+//Array is also a core type!
+//Arrays can be flexible or strict in typescript
+// when hovering typescript infers that hobbies is a array of strings!
+const person = {
+    name: "Jeroen",
+    age: 29,
+    hobbies: ['Gaming','Coding'],
+    friends: [{
+        name: "Danique",
+        age: 26,
+        hobbies: ["Designing", "Netflix"]
+    }]
+}
+//When initialy empty, then implicitly set type!
+let favoriteActitivies: string[];
+
+// Will give error because string !== array
+// favoriteActitivies = "test";
+
+//If we want an array but dont want to explicitly set 1 type, any can help (but be carefull :))
+//let annyArray: any[];
+
+for(const hobby of person.hobbies){
+    console.log(hobby);
+    // if we change hobby to hobby.toUpperCase() it wil work because typescript infers it as string
+    // but code under this line will give error because of inference!
+    // hobby.map()
+}

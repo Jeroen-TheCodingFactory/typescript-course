@@ -39,8 +39,39 @@ add(number1, number2, printResult, resultPhrase);
 // and then some later: numberX  = 5;
 // You can be sure it is a number!
 //objects
+// object types infered by TS
+// with key type pairs
+// you dont want to only work with generic object type
+// you want to be more specific, with {} as type!
+// now we make a specific object type like this:
+// const person: {name: string, age: number} = {
+//     name: "Jeroen",
+//     age: 29,
+// }
+// type inference still will kick in though, so typescript infers it, you won't have to make a specific object.
+// const person = {
+//     name: "Jeroen",
+//     age: 29,
+// }
+// when we use a specific type, autocomplete works on our objects :)
+// console.log(person.age);
+// typescript throws a warning when we dont have a property on a object.
+//When we hover over the object is becomes clear which datatypes are in the object.
+//Array is also a core type!
+//Arrays can be flexible or strict in typescript
+// when hovering typescript infers that hobbies is a array of strings!
 var person = {
     name: "Jeroen",
-    age: 29
+    age: 29,
+    hobbies: ['Gaming', 'Coding']
 };
-console.log(person.name);
+//When initialy empty, then implicitly set type!
+var favoriteActitivies;
+// Will give error because string !== array
+// favoriteActitivies = "test";
+//If we want an array but dont want to explicitly set 1 type, any can help (but be carefull :))
+//let annyArray: any[];
+for (var _i = 0, _a = person.hobbies; _i < _a.length; _i++) {
+    var hobby = _a[_i];
+    console.log(hobby);
+}
