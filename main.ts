@@ -73,16 +73,16 @@ add(number1,number2,printResult, resultPhrase);
 //Array is also a core type!
 //Arrays can be flexible or strict in typescript
 // when hovering typescript infers that hobbies is a array of strings!
-const person = {
-    name: "Jeroen",
-    age: 29,
-    hobbies: ['Gaming','Coding'],
-    friends: [{
-        name: "Danique",
-        age: 26,
-        hobbies: ["Designing", "Netflix"]
-    }]
-}
+// const person = {
+//     name: "Jeroen",
+//     age: 29,
+//     hobbies: ['Gaming','Coding'],
+//     friends: [{
+//         name: "Danique",
+//         age: 26,
+//         hobbies: ["Designing", "Netflix"]
+//     }]
+// }
 //When initialy empty, then implicitly set type!
 let favoriteActitivies: string[];
 
@@ -92,9 +92,49 @@ let favoriteActitivies: string[];
 //If we want an array but dont want to explicitly set 1 type, any can help (but be carefull :))
 //let annyArray: any[];
 
-for(const hobby of person.hobbies){
-    console.log(hobby);
-    // if we change hobby to hobby.toUpperCase() it wil work because typescript infers it as string
-    // but code under this line will give error because of inference!
-    // hobby.map()
+// for(const hobby of person.hobbies){
+//     console.log(hobby);
+//     if we change hobby to hobby.toUpperCase() it wil work because typescript infers it as string
+//     but code under this line will give error because of inference!
+//     hobby.map()
+// }
+
+//Javascript does not have tuple by default
+// A tuple is a fixed-length and fixed-type array
+// lets say we have a role number and string description
+const person: {
+    name: string;
+    age:number;
+    hobbies: string[];
+    friends: Friend[],
+    role: [number,string];
+} = {
+        name: "Jeroen",
+        age: 29,
+        hobbies: ['Gaming','Coding'],
+        friends: [{
+            name: "Danique",
+            age: 26,
+            hobbies: ["Designing", "Netflix"]
+        }],
+        role: [2, 'author'] //ts infers that this is an array with string OR numbers
+    }
+//problem is that we can push numbers and string in the role section now,
+// but we want a tuple, a fixed length, we can explicetly overwrite type
+// person.role[1] = 100; will give an error
+// push() is an exception so you can still use push! Be aware of that!!!!\
+// person.role = [] will also give an error
+
+
+interface Friend{
+    name: string,
+    age: number,
+    hobbies: string[]
+}
+
+person.friends[1] = {name: "t", age: 10, hobbies: ["test"]};
+
+
+for(const friend of person.friends){
+    console.log(friend);
 }
