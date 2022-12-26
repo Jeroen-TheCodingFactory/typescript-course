@@ -1,5 +1,5 @@
 //Union types 
-function combine(input1: number | string, input2: number | string, resultConversion: 'as-number' | 'as-text') {
+function combine(input1: Combinable, input2: Combinable, resultConversion: 'as-number' | 'as-text') {
     let result;
     if (typeof input1 === "number" && typeof input2 === "number") {
         result = input1 + input2;
@@ -32,3 +32,7 @@ function combine(input1: number | string, input2: number | string, resultConvers
 // a literal type is derived from a core type, and you use it in combination with union
 console.log(combine("jeroen", "danique", 'as-text'));
 console.log(combine(29, 27, 'as-number'));
+
+// It can be cumbersome to make own union types, we can make a new type with type aliasas!
+
+type Combinable = string | number;
