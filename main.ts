@@ -1,48 +1,46 @@
-//Union types 
-function combine(input1: Combinable, input2: Combinable, resultConversion: 'as-number' | 'as-text') {
-    let result;
-    if (typeof input1 === "number" && typeof input2 === "number") {
-        result = input1 + input2;
-    }
-    else {
-        result = input1.toString() + input2.toString();
-    }
-
-    if(resultConversion === 'as-number'){
-        return parseFloat(result);
-    }
-    else{
-        return result.toString();
-    }
+function add(n1: number, n2:number): number{
+    return n1 + n2;
 }
 
-//above is a function that combines numbers AND strings.
-// But typescript is static typed, so we need a new kind of behavior:
-// union types, which are declared with |
-// typescript gives an error, but we can ignore that
-// we can also use a typeof check to fix this error
+//You can also assign types to functions instead of parameters, a return type
+// Typescript infers the type of the return type
+// Just like variables it is a good idea to let typescript decide, so net set a type on a function unless it is needed
 
-// console.log(combine("jeroen", "danique", 'as-string'));
-// console.log(combine(29, 27, 'as-number'));
 
-//Literal types
-// Literal types are types that explicetly expects a value
-// It is done automaticly with const in javascript
-// we have to memorize values above like as-string and as-number. We COULD use a enum, but a enum is a bit overboard
-// a literal type is derived from a core type, and you use it in combination with union
-console.log(combine("jeroen", "danique", 'as-text'));
-console.log(combine(29, 27, 'as-number'));
-
-// It can be cumbersome to make own union types, we can make a new type with type aliasas!
-
-type Combinable = string | number;
-
-type PersonObject = {
-    name: string,
-    age: number
+// a special type is void, a function that does not return something
+// It is a common type among programming languages, like Java and C++
+// void means it does NOT return anything
+// technially void returns undefined when returning nothing
+// typescript makes a difference between undefined type and vanilla javascript undefined
+// undefined type can only be returned from a function with an empty return 
+function printResult(num: number){
+    console.log('Result: ' + num);
 }
 
-const person1: PersonObject = {
-    name: "Jeroen",
-    age: 29,
+console.log(add(12,12));
+
+//there is also a function type!
+// Function is a typescript type.
+// we want a function to be as specificly as passible, parameters and return types
+// a function type is created by a look-a-like arrow function
+//old
+// let combineValues: Function;
+
+// combineValues = add;
+
+// console.log(combineValues(4,6));
+//new
+//accept every function where the function takes 2 numbers and returns a number!
+let combineValues: (a: number, b: number) => number;
+
+// combineValues = add; // will pass :D
+// combineValues = printResult; // error!
+
+//calbacks work the same way
+function addAndHandle(n1: number, n2:number, callback: (num: number) => void){
+    const result = n1 + n2;
+    callback(result);
 }
+
+addAndHandle(10,20, (result) => {console.log("joehoe " + result );});
+// We have a callback that typescript will infer because result HAS to be a numer in the function that the callback uses.
