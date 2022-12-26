@@ -102,13 +102,7 @@ let favoriteActitivies: string[];
 //Javascript does not have tuple by default
 // A tuple is a fixed-length and fixed-type array
 // lets say we have a role number and string description
-const person: {
-    name: string;
-    age:number;
-    hobbies: string[];
-    friends: Friend[],
-    role: [number,string];
-} = {
+const person: Person = {
         name: "Jeroen",
         age: 29,
         hobbies: ['Gaming','Coding'],
@@ -132,8 +126,17 @@ interface Friend{
     hobbies: string[]
 }
 
-person.friends[1] = {name: "t", age: 10, hobbies: ["test"]};
+interface Person{
+    name: string,
+    age:number,
+    hobbies: string[],
+    friends: Friend[],
+    role: [number,string],
+}
 
+person.friends[1] = {name: "t", age: 10, hobbies: ["test"]};
+person.test = "";
+person.friends[2] = {name: "test"}
 
 for(const friend of person.friends){
     console.log(friend);

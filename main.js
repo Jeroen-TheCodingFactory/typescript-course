@@ -96,11 +96,6 @@ var person = {
         }],
     role: [2, 'author'] //ts infers that this is an array with string OR numbers
 };
-//problem is that we can push numbers and string in the role section now,
-// but we want a tuple, a fixed length, we can explicetly overwrite type
-// person.role[1] = 100; will give an error
-// push() is an exception so you can still use push! Be aware of that!!!!\
-// person.role = [] will also give an error
 person.friends[1] = { name: "t", age: 10, hobbies: ["test"] };
 for (var _i = 0, _a = person.friends; _i < _a.length; _i++) {
     var friend = _a[_i];
