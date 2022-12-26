@@ -36,3 +36,13 @@ console.log(combine(29, 27, 'as-number'));
 // It can be cumbersome to make own union types, we can make a new type with type aliasas!
 
 type Combinable = string | number;
+
+type PersonObject = {
+    name: string,
+    age: number
+}
+
+const person1: PersonObject = {
+    name: "Jeroen",
+    age: 29,
+}
