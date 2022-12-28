@@ -45,3 +45,17 @@ function addAndHandle(n1: number, n2:number, callback: (num: number) => void){
 addAndHandle(10,20, (result) => {console.log("joehoe " + result );});
 // We have a callback that typescript will infer because result HAS to be a numer in the function that the callback uses.
 // WARNING the callback CAN return something and still pas as void. void says we won't DO anything with your result value
+
+//test with void and with return type
+function innerTest(number:number ):number {
+    return number;
+}
+
+function test(n:number):void {
+    innerTest(n);
+    //return innerTest(4) WILL give an error
+    // but calling function that returns something and with no return in this function is ok
+}
+
+console.log(test(4));
+
