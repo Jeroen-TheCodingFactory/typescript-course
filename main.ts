@@ -1,47 +1,53 @@
-function add(n1: number, n2:number): number{
-    return n1 + n2;
+// There are 2 more types that are good te be awere off.
+// unknown is a type where type of the far is unknown. 
+// if we set a var to unknown, we can't set it to another type.
+// any is less strict, unknown is more restrictive than any
+
+let userInput: unknown;
+let userName: string;
+
+//is ok
+// userInput = 5;
+// userInput = "Max"
+
+// gives error
+// userName = userInput;
+
+// if we use a typeof check it will work:
+if (typeof userInput === "string"){
+    userName = userInput;
 }
 
-//You can also assign types to functions instead of parameters, a return type
-// Typescript infers the type of the return type
-// Just like variables it is a good idea to let typescript decide, so net set a type on a function unless it is needed
+// unknown is the better choice than any because of the more strictness
+//therefore you have to use a typeof check !!!
 
+// the last interesting type is never
 
-// a special type is void, a function that does not return something
-// It is a common type among programming languages, like Java and C++
-// void means it does NOT return anything
-// technially void returns undefined when returning nothing
-// typescript makes a difference between undefined type and vanilla javascript undefined
-// undefined type can only be returned from a function with an empty return 
-function printResult(num: number){
-    console.log('Result: ' + num);
+// it returns nothing, so void is the infered type
+// but this functions returns never! it nevers return (a value)
+// throw will cancel our script! 
+// or a part of the script if you use try/catch
+// there you can use neer
+function generateError(message: string, code:number): never{
+    throw {message, errorCode: code }
 }
 
-console.log(add(12,12));
+//generateError("An error occurred",500);
 
-//there is also a function type!
-// Function is a typescript type.
-// we want a function to be as specificly as passible, parameters and return types
-// a function type is created by a look-a-like arrow function
-//old
-// let combineValues: Function;
+let doesntDoAnything = generateError("An Error occured",500);
+console.log(doesntDoAnything);
 
-// combineValues = add;
+// with never you are a little bit more specific that this functions never returns
+// a function with a infinite loop also never returns!
 
-// console.log(combineValues(4,6));
-//new
-//accept every function where the function takes 2 numbers and returns a number!
-let combineValues: (a: number, b: number) => number;
+//tupil
 
-// combineValues = add; // will pass :D
-// combineValues = printResult; // error!
+type tupilTest = [number,string];
 
-//calbacks work the same way
-function addAndHandle(n1: number, n2:number, callback: (num: number) => void){
-    const result = n1 + n2;
-    callback(result);
+let testObject: {
+    name: string,
+    age: tupilTest
+} = {
+    name: "Jeroen",
+    age: [29,"negenentwintig"]
 }
-
-addAndHandle(10,20, (result) => {console.log("joehoe " + result );});
-// We have a callback that typescript will infer because result HAS to be a numer in the function that the callback uses.
-// WARNING the callback CAN return something and still pas as void. void says we won't DO anything with your result value
