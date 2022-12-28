@@ -1,5 +1,5 @@
 # Understanding TypeScript - 2023 Edition Repo
-
+!["Typescript logo from Wikipedia"](https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg)
 ## Description
 Repo for the course <em>"Understanding TypeScript - 2023 Edition"</em> by <em>Maximilian Schwarzmüller</em>
 
