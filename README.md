@@ -32,6 +32,7 @@ I learned the basic types that you will use in Typescript:
 - unknown
 - never
 - union 
+
 I learned that these types can be applied to variables functions and function arguments. But it is a bad practice to set every variable type to the correct type as TypeScript <strong>infers</strong> most of them.
 
 I also learned about the usage of <strong>enums</strong> and created my own enums. 
