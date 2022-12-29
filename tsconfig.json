@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    //compilerOptions lets us change behavior of the typescript compiler!
+
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */
@@ -11,7 +13,8 @@
     // "disableReferencedProjectLoad": true,             /* Reduce the number of projects loaded automatically by TypeScript. */
 
     /* Language and Environment */
-    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    //target to compile javascript to!
+    "target": "ES3",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
     // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
     // "jsx": "preserve",                                /* Specify what JSX code is generated. */
     // "experimentalDecorators": true,                   /* Enable experimental support for TC39 stage 2 draft decorators. */
@@ -99,5 +102,19 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+  },
+  // we can add options here which does not affect the compiler but other things like included and excluded files
+  // you use wildcards (*)
+  // node_modules is somthing you want to exclude
+  // node_module is excluded by default though
+  "exclude": [
+    "node_modules",
+    "section_1"
+  ],
+  // if you DO set the include key, only files in include will be compiled
+  "include":[
+    "main.ts"
+  ],
+  // if you set both you compile include - (minus) exclude
+  // you also have a files option where you set the individual files you want to compile
 }

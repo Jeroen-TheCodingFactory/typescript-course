@@ -11,3 +11,10 @@ console.log(myName);
 // after that we can use tsc command to run the whole project
 // we can use watch mode with that to
 
+
+//arrow test to compile
+let arrow = () => {
+    console.log("arrow");
+}
+
+arrow();
