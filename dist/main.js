@@ -1,14 +1,9 @@
 "use strict";
-const myName = 'Jeroen';
-console.log(myName);
-let arrow = () => {
-    console.log("arrow");
-};
-arrow();
-function clickHandler(message) {
-    console.log('clicked + message');
+const userName = "Jeroen";
+let age = 38;
+function add(a, b) {
+    var result;
+    result = a + b;
+    return result;
 }
-const button = document.querySelector("button");
-if (button) {
-    button.addEventListener('click', clickHandler.bind(null, "test"));
-}
+//# sourceMappingURL=main.js.map
