@@ -5,7 +5,10 @@ let arrow = () => {
     console.log("arrow");
 };
 arrow();
-const button = document.querySelector('button');
-button.addEventListener("click", () => {
-    console.log("clicked!");
-});
+function clickHandler(message) {
+    console.log('clicked + message');
+}
+const button = document.querySelector("button");
+if (button) {
+    button.addEventListener('click', clickHandler.bind(null, "test"));
+}
