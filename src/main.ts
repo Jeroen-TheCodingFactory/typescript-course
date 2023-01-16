@@ -62,3 +62,20 @@ if(button){
 }
 
 /* strictBindCallApply checks if the bind makes sense */
+
+// We also have some codequality options
+// like unused vars and implicit returns (a function that sometimes returns and sometimes not for example)!
+// unused global are allowed because typescript does not know if you need it in another file
+
+//implicit return:
+// function add(n1: number, n2: number){
+//     if(n1 + n2 > 0){
+//         return n1 + n2;
+//     }
+// }
+
+//to get a better development flow we can add some extensions */
+/* ESLint is a linter from microsoft, which helps with errors and warnings (detecting them) */
+/* prettier is an extension which makes your code more prettie by defined styles. */
+/* you also have a extra debugger for chrome extension where you can debug tc with sourcemaps in VS code */
+
