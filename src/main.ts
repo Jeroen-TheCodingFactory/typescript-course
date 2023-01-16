@@ -30,4 +30,23 @@ function add(a: number, b:number){
 // console.log(isOld);
 
 
+// const addF = (a: number, b: number) => {
+//     return a + b;
+// }
 
+// console.log(addF(2,5));
+
+// arrow functions gives us a shorter way to write functions with 1 parameter (always implicit returns)
+const addF = (a:number, b: number) => a + b;
+
+// with 1 parameter it can be even shorter without type assignments of parameters
+
+const printOutput: (a: number | string) => void = output => console.log(output);
+
+//also in JS default arguments to parameters where added
+
+const addDefault = (a: number, b: number = 1) => a + b;
+
+console.log(addDefault(2));
+
+/* default arguments have to be last in the list!, because of the order of arguments*/
